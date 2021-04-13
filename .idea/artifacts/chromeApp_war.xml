@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="chromeApp:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>chromeApp</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="chromeApp-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="chromeApp:war exploded" />
+    </root>
+  </artifact>
+</component>
