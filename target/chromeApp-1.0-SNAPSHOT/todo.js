@@ -19,9 +19,7 @@ function deleteTodo(event) {
 
     // * toDos 배열의 데이터를 모두 돌면서 인자의 function을 실행하여 true인 값을 반환
     toDos = toDos.filter(function(toDo){
-        const isTodo = toDo.id !== parseInt(li.id);
-        console.log('filter value',isTodo, toDo);
-        return isTodo;
+        return toDo.id !== parseInt(li.id);
     });
 
     saveToDos();
