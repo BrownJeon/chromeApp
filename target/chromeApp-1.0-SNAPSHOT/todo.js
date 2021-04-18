@@ -5,7 +5,27 @@ const toDoForm = document.querySelector(".js-toDoForm"),
 
 const TODOS_LS = 'toDos';
 
-const toDos = [];
+function filterFn(toDo) {
+    return toDo.id === 1;
+}
+
+let toDos = [];
+
+function deleteTodo(event) {
+    const btn =event.target;
+    const li = btn.parentNode;
+
+    toDoList.removeChild(li);
+
+    // * toDos 배열의 데이터를 모두 돌면서 인자의 function을 실행하여 true인 값을 반환
+    toDos = toDos.filter(function(toDo){
+        const isTodo = toDo.id !== parseInt(li.id);
+        console.log('filter value',isTodo, toDo);
+        return isTodo;
+    });
+
+    saveToDos();
+}
 
 function saveToDos() {
     // localStorage에 저장되는 모든 데이터는 String으로 저장해야함.
@@ -18,6 +38,7 @@ function paintToDo(text){
 
     const delBtn = document.createElement("button");
     delBtn.innerText = "❌";
+    delBtn.addEventListener("click", deleteTodo);
 
     const span = document.createElement("span");
     span.innerText = text;
@@ -43,6 +64,7 @@ function loadTodos() {
         // localStorage에서 가져온 데이터는 String이기 때문에 다시 JSON으로 변경해줘야함
         const parsedTodos = JSON.parse(loadToDos);
 
+        // * parsedTodos 배열의 데이터를 모두 돌면서 인자의 function을 실행
         parsedTodos.forEach(function(toDo){
             paintToDo(toDo.text);
         })
