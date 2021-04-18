@@ -12,13 +12,13 @@ function filterFn(toDo) {
 let toDos = [];
 
 function deleteTodo(event) {
-    const btn =event.target;
+    const btn = event.target;
     const li = btn.parentNode;
 
     toDoList.removeChild(li);
 
     // * toDos 배열의 데이터를 모두 돌면서 인자의 function을 실행하여 true인 값을 반환
-    toDos = toDos.filter(function(toDo){
+    toDos = toDos.filter(function (toDo) {
         return toDo.id !== parseInt(li.id);
     });
 
@@ -30,7 +30,7 @@ function saveToDos() {
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
 
-function paintToDo(text){
+function paintToDo(text) {
     const li = document.createElement("li");
     const newId = toDos.length + 1;
 
@@ -65,20 +65,27 @@ function loadTodos() {
         const parsedTodos = JSON.parse(loadToDos);
 
         // * parsedTodos 배열의 데이터를 모두 돌면서 인자의 function을 실행
-        parsedTodos.forEach(function(toDo){
+        parsedTodos.forEach(function (toDo) {
             paintToDo(toDo.text);
         })
     }
 }
 
-function init() {
+function initTodo() {
     loadTodos();
     toDoForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const currentValue = toDoInput.value;
-        paintToDo(currentValue);
-        toDoInput.value = "";
+        const username = localStorage.getItem("username");
+        if (username === null) {
+            alert('이름을 입력해주세요.');
+        } else if(toDoInput.value === '') {
+            alert('값을 입력해주세요.');
+        } else {
+            event.preventDefault();
+            const currentValue = toDoInput.value;
+            paintToDo(currentValue);
+            toDoInput.value = "";
+        }
     })
 }
 
-init();
+initTodo();

@@ -70,12 +70,9 @@ ul {
     margin-top: 50px;
 }
 
+
 .showing {
     display: block;
-}
-
-.js-form{
-    display: none;
 }
 
 .greetings {
