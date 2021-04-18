@@ -6,6 +6,10 @@ body {
     cursor: pointer;
 }
 
+.js-weather {
+    color: black;
+}
+
 body {
     color: #436fe8;
 }
@@ -32,11 +36,11 @@ h1 {
     display: block;
 }
 
-.bgImage{
-    position : absolute;
-    top:0;
-    left:0;
-    width:100%;
+.bgImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
     z-index: -1;
 
@@ -44,7 +48,7 @@ h1 {
 }
 
 @keyframes fadeIn {
-    from{
+    from {
         opacity: 0;
     }
     to {
